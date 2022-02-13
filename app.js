@@ -1,5 +1,5 @@
 function updateProductNumber(number, productTotal, price, isIncrease) {
-    const productInput = document.getElementById(number);
+    const productInput = document.getElementById(number); // (product + '-number')
     let productNumber = productInput.value;
     if (isIncrease == true) {
         productNumber = parseInt(productNumber) + 1;
@@ -7,18 +7,45 @@ function updateProductNumber(number, productTotal, price, isIncrease) {
         productNumber = parseInt(productNumber) - 1;
     }
     productInput.value = productNumber; // ei code if else er vitore chilo but caseTotal er shathe multyply korete jhamela howay ei code take baire likha hoise
-    const caseTotal = document.getElementById(productTotal);
-    caseTotal.innerText = productNumber * price;
+    // update total
+    const pTotal = document.getElementById(productTotal); // (product + '-total')
+    pTotal.innerText = productNumber * price;
+    // calculate sub total
+    calculateTotal()
 }
+
+function getInputValue() {
+
+}
+
+function calculateTotal() {
+    const phoneInput = document.getElementById('phone-number');
+    const phoneNumber = parseInt(phoneInput.value);
+    const phoneTotal = phoneNumber * 1219;
+
+    const caseInput = document.getElementById('case-number');
+    const caseNumber = caseInput.value;
+    const caseTotal = caseNumber * 59;
+
+    const subTotal = phoneTotal + caseTotal;
+    const tax = subTotal / 10;
+    const totalPrice = subTotal + tax;
+    document.getElementById('sub-total').innerText = subTotal;
+    document.getElementById('tax-amount').innerText = tax;
+    document.getElementById('total-price').innerText = totalPrice;
+
+}
+
+
 // phone increase decrease
 document.getElementById('phone-plus').addEventListener
     ('click', function () {
-        updateProductNumber('phone-number', 'phone-total', 1219, true);
+        updateProductNumber('phone-number', 'phone-total', 1219, true); // ('phone')
     });
 
 document.getElementById('phone-minus').addEventListener
     ('click', function () {
-        updateProductNumber('phone-number', 'phone-total', 1219, false);
+        updateProductNumber('phone-number', 'phone-total', 1219, false); // ('phone')
     })
 
 
@@ -26,7 +53,7 @@ document.getElementById('phone-minus').addEventListener
 // case increase decrease
 document.getElementById('case-plus').addEventListener
     ('click', function () {
-        updateProductNumber('case-number', 'case-total', 59, true);
+        updateProductNumber('case-number', 'case-total', 59, true); // ('case')
 
         // case plus when different addevent function 
         /* 
@@ -45,3 +72,4 @@ document.getElementById('case-minus').addEventListener
         const caseNumber = caseInput.value;
         caseInput.value = parseInt(caseNumber) - 1; */
     })
+
