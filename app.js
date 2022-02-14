@@ -7,7 +7,13 @@ function updateProductNumber(number, productTotal, price, isIncrease) {
         productNumber = parseInt(productNumber) - 1;
     }
     productInput.value = productNumber; // ei code if else er vitore chilo but caseTotal er shathe multyply korete jhamela howay ei code take baire likha hoise
+    /* uporer code tar example:
+    input = 10;
+    x = input;
+    x = x + 1;
+    input = x; */
     // update total
+
     const pTotal = document.getElementById(productTotal); // (product + '-total')
     pTotal.innerText = productNumber * price;
     // calculate sub total
